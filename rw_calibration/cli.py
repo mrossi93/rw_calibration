@@ -1,7 +1,7 @@
 """Console script for rw_calibration."""
 import sys
 import click
-from rw_calibration import calibrate
+from rw_calibration.rw_calibration import calibrate
 
 
 @click.command()
