@@ -34,11 +34,13 @@ def test_command_line_interface():
     assert result.exit_code == 0
     assert "Error: please indicate the path to World Coordinates File" in result.output
 
-    result = runner.invoke(cli.main("world_sample.txt"))
+    result = runner.invoke(cli.main, ["-w", "world_sample.txt"])
     assert result.exit_code == 0
     assert "Error: please indicate the path to Robot Coordinates File" in result.output
 
-    result = runner.invoke(cli.main("world_sample.txt", "robot_sample.txt"))
+    result = runner.invoke(
+        cli.main, ["-w", "world_sample.txt", "-r", "robot_sample.txt"]
+    )
     assert result.exit_code == 0
     assert "rw_calibration.cli.main" in result.output
 
