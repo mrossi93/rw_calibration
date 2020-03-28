@@ -29,9 +29,15 @@ def test_content(response):
 def test_command_line_interface():
     """Test the CLI."""
     runner = CliRunner()
+
     result = runner.invoke(cli.main)
+    assert result.exit_code == 1
+    assert "rw_calibration.cli.main" in result.output
+
+    result = runner.invoke(cli.main("world_sample.txt", "robot_sample.txt"))
     assert result.exit_code == 0
-    assert 'rw_calibration.cli.main' in result.output
-    help_result = runner.invoke(cli.main, ['--help'])
+    assert "rw_calibration.cli.main" in result.output
+
+    help_result = runner.invoke(cli.main, ["--help"])
     assert help_result.exit_code == 0
-    assert '--help  Show this message and exit.' in help_result.output
+    assert "--help  Show this message and exit." in help_result.output
