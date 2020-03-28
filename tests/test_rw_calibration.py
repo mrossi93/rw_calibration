@@ -31,7 +31,7 @@ def test_command_line_interface():
     runner = CliRunner()
 
     result = runner.invoke(cli.main)
-    assert result.exit_code == 1
+    assert result.exit_code == 0
     assert "rw_calibration.cli.main" in result.output
 
     result = runner.invoke(cli.main("world_sample.txt", "robot_sample.txt"))
