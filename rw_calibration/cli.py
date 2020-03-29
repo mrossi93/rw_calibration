@@ -1,7 +1,7 @@
 """Console script for rw_calibration."""
 import sys
 import click
-from rw_calibration.rw_calibration import calibrate
+from rw_calibration.rw_calibration import calibrate, read_data
 
 
 @click.command()
@@ -16,20 +16,22 @@ def main(wfile, rfile):
             )
         )
         return 1
-    if rfile is None:
+    elif rfile is None:
         click.echo(
             click.style(
                 "Error: please indicate the path to Robot Coordinates File", fg="red"
             )
         )
         return 1
+    else:
+        wpoints = read_data(wfile, sep="\t")
+        rpoints = read_data(rfile, sep=" ")
+        results = calibrate(wpoints, rpoints)
 
-    results = calibrate(wfile, rfile)
-
-    click.echo("\nRototranslator:\n{}".format(results["Rototranslator"]))
-    click.echo("\nError:\t\t\tx\ty\tz")
-    click.echo("   Mean:\t{}".format(results["Error Mean"]))
-    click.echo("   Std Dev:\t{}".format(results["Error Std Dev"]))
+        click.echo("\nRototranslator:\n{}".format(results["Rototranslator"]))
+        click.echo("\nError:\t\t\tx\ty\tz")
+        click.echo("   Mean:\t{}".format(results["Error Mean"]))
+        click.echo("   Std Dev:\t{}".format(results["Error Std Dev"]))
 
     return 0
 

@@ -31,10 +31,12 @@ def read_data(filepath, sep=" "):
 
 
 def rototranslation(points):
-    """This function generates a rototranslator starting from three non-collinear points
+    """This function generates a rototranslator starting from three
+    non-collinear points
     
     Arguments:
-        points {[numpy.array]} -- Three non-collinear points in a 3x3 numpy array [x,y,z]
+        points {[numpy.array]} -- Three non-collinear points in a 3x3
+        numpy array [x,y,z]
     
     Returns:
         [numpy.array] -- Rototranslation matrix (4x4 numpy array)
@@ -61,22 +63,24 @@ def rototranslation(points):
     return rototranslator
 
 
-def calibrate(path_world_file, path_robot_file):
+def calibrate(world_points, robot_points):
     """This function performs the actual Robot to World Calibration.
     It computes every possibile combination between three non-collinear points,
-    computes the correspoding rototranslator and then average the mean rototranslator.
-    Everything is expressed in mm.
+    computes the correspoding rototranslator and then average the mean
+    rototranslator. Everything is expressed in mm.
 
     Arguments:
-        path_world_file {[str]} -- Path to World Coordinates File
-        path_robot_file {[str]} -- Path to Robot Coordinates File
+        world_points {[numpy.array]} -- Points in World Coordinates
+        robot_points {[numpy.array]} -- Points in Robot Coordinates
     
     Raises:
-        Exception: Number of points in Robot and World Coordinates file is not correspoding
+        Exception: Number of points in Robot and World Coordinates
+        file is not correspoding.
     
     Returns:
-        [dict] -- Dictionary containing the computed rototranslator and some informations about
-        the error (mean and standard deviation)
+        [dict] -- Dictionary containing the computed rototranslator
+        and some informations about the error (mean and standard
+        deviation).
     """
 
     # Import data and remove offset
