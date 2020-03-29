@@ -36,7 +36,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     description="A Utility to perform Robot to World Calibration",
-    entry_points={"console_scripts": ["rw_calibration=rw_calibration.cli:main",],},
+    entry_points={"console_scripts": ["rw_calibration=rw_calibration.cli:main"]},
     install_requires=requirements,
     license="MIT license",
     long_description=readme + "\n\n" + history,
@@ -48,6 +48,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/mrossi93/rw_calibration",
-    version="version='0.2.0'",
+    version="0.2.0",
     zip_safe=False,
 )
