@@ -7,7 +7,7 @@ RW Calibration
         :target: https://pypi.python.org/pypi/rw_calibration
 
 .. image:: https://img.shields.io/travis/mrossi93/rw_calibration.svg
-        :target: https://travis-ci.com/mrossi93/rw_calibration
+        :target: https://travis-ci.org/mrossi93/rw_calibration
 
 .. image:: https://readthedocs.org/projects/rw-calibration/badge/?version=latest
         :target: https://rw-calibration.readthedocs.io/en/latest/?badge=latest
