@@ -12,14 +12,16 @@ def main(wfile, rfile):
     if wfile is None:
         click.echo(
             click.style(
-                "Error: please indicate the path to World Coordinates File", fg="red"
+                "Error: please indicate the path to World Coordinates File",
+                fg="red",
             )
         )
         return 1
     elif rfile is None:
         click.echo(
             click.style(
-                "Error: please indicate the path to Robot Coordinates File", fg="red"
+                "Error: please indicate the path to Robot Coordinates File",
+                fg="red",
             )
         )
         return 1

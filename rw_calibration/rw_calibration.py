@@ -102,7 +102,9 @@ Found {} points in World file and {} points in Robot file""".format(
 
     offset_R_x = 80 - 80  # from TCP to SMR + coherence
     offset_R_y = 0  # No offset on y axis
-    offset_R_z = 20 + 25 + 250  # pointer basement along z + SMR along z + coherence
+    offset_R_z = (
+        20 + 25 + 250
+    )  # pointer basement along z + SMR along z + coherence
     offset_R = [offset_R_x, offset_R_y, offset_R_z]
 
     # Remove offset
@@ -124,7 +126,9 @@ Found {} points in World file and {} points in Robot file""".format(
     if num_creation_points + num_star_points != num_points:
         num_star_points = num_star_points - 1
 
-    index_creation = np.round(np.linspace(0, num_points - 1, num_creation_points))
+    index_creation = np.round(
+        np.linspace(0, num_points - 1, num_creation_points)
+    )
     index_creation = [int(i) for i in index_creation]
     index_star = [i for i in range(num_points) if i not in index_creation]
 
@@ -158,11 +162,19 @@ Found {} points in World file and {} points in Robot file""".format(
     # for each permutation, generate the rototranslator
     for i in range(len(index_perm)):
         points_G_current = np.array(
-            [creation_perm_G[i, :3], creation_perm_G[i, 3:6], creation_perm_G[i, 6:]]
+            [
+                creation_perm_G[i, :3],
+                creation_perm_G[i, 3:6],
+                creation_perm_G[i, 6:],
+            ]
         )
 
         points_R_current = np.array(
-            [creation_perm_R[i, :3], creation_perm_R[i, 3:6], creation_perm_R[i, 6:]]
+            [
+                creation_perm_R[i, :3],
+                creation_perm_R[i, 3:6],
+                creation_perm_R[i, 6:],
+            ]
         )
 
         LG_T[:, :, i] = rototranslation(points_G_current)
