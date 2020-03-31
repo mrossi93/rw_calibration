@@ -6,13 +6,13 @@ import numpy as np
 
 def read_data(filepath, sep=" "):
     """This function reads file containing Points Coordinates
-    
+
     Arguments:
         filepath {[str]} -- Path to the file to be read
-    
+
     Keyword Arguments:
         sep {str} -- Separator for columns in file (default: {" "})
-    
+
     Returns:
         [list] -- List of points read from input file, in the format [x,y,z]
     """
@@ -33,11 +33,11 @@ def read_data(filepath, sep=" "):
 def rototranslation(points):
     """This function generates a rototranslator starting from three
     non-collinear points
-    
+
     Arguments:
         points {[numpy.array]} -- Three non-collinear points in a 3x3
         numpy array [x,y,z]
-    
+
     Returns:
         [numpy.array] -- Rototranslation matrix (4x4 numpy array)
     """
@@ -63,30 +63,27 @@ def rototranslation(points):
     return rototranslator
 
 
-def calibrate(world_points, robot_points):
+def calibrate(points_G, points_R):
     """This function performs the actual Robot to World Calibration.
     It computes every possibile combination between three non-collinear points,
     computes the correspoding rototranslator and then average the mean
     rototranslator. Everything is expressed in mm.
 
     Arguments:
-        world_points {[numpy.array]} -- Points in World Coordinates
-        robot_points {[numpy.array]} -- Points in Robot Coordinates
-    
+        points_G {[numpy.array]} -- Points in World Coordinates
+        points_R {[numpy.array]} -- Points in Robot Coordinates
+
     Raises:
         Exception: Number of points in Robot and World Coordinates
         file is not correspoding.
-    
+
     Returns:
         [dict] -- Dictionary containing the computed rototranslator
         and some informations about the error (mean and standard
         deviation).
     """
 
-    # Import data and remove offset
-    points_G = read_data(path_world_file, sep="\t")
-    points_R = read_data(path_robot_file, sep=" ")
-
+    # Remove offset from data
     if len(points_G) != len(points_R):
         raise Exception(
             """
