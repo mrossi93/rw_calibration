@@ -10,22 +10,18 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click>=7.0", "Numpy"]
+requirements = ["Click>=7.0", "Numpy", "colorama"]
 
-setup_requirements = [
-    "pytest-runner",
-]
+setup_requirements = ["pytest-runner"]
 
-test_requirements = [
-    "pytest>=3",
-]
+test_requirements = ["pytest>=3"]
 
 setup(
     author="Matteo Rossi",
     author_email="rossimatteo1993@gmail.com",
     python_requires=">=3.6",
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
@@ -35,7 +31,9 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     description="A Utility to perform Robot to World Calibration",
-    entry_points={"console_scripts": ["rw_calibration=rw_calibration.cli:main"]},
+    entry_points={
+        "console_scripts": ["rw_calibration=rw_calibration.cli:main"]
+    },
     install_requires=requirements,
     license="MIT license",
     long_description=readme + "\n\n" + history,
