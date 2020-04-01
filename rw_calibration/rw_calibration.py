@@ -8,13 +8,13 @@ def read_data(filepath, sep=" "):
     """This function reads file containing Points Coordinates
 
     Arguments:
-        filepath {[str]} -- Path to the file to be read
+        filepath (str) -- Path to the file to be read
 
     Keyword Arguments:
-        sep {str} -- Separator for columns in file (default: {" "})
+        sep (str) -- Separator for columns in file (default: " ")
 
     Returns:
-        [list] -- List of points read from input file, in the format [x,y,z]
+        (list) -- List of points read from input file, in the format [x,y,z]
     """
     with open(filepath, "r") as file:
 
@@ -35,7 +35,7 @@ def rototranslation(points):
     non-collinear points
 
     Arguments:
-        points {[numpy.array]} -- Three non-collinear points in a 3x3
+        points (numpy.array) -- Three non-collinear points in a 3x3
         numpy array [x,y,z]
 
     Returns:
@@ -70,8 +70,8 @@ def calibrate(points_G, points_R):
     rototranslator. Everything is expressed in mm.
 
     Arguments:
-        points_G {[numpy.array]} -- Points in World Coordinates
-        points_R {[numpy.array]} -- Points in Robot Coordinates
+        points_G (numpy.array) -- Points in World Coordinates
+        points_R (numpy.array) -- Points in Robot Coordinates
 
     Raises:
         Exception: Number of points in Robot and World Coordinates

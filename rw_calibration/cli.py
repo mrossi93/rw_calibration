@@ -8,7 +8,11 @@ from rw_calibration.rw_calibration import calibrate, read_data
 @click.option("--wfile", "-w", help="Path to World Coordinates File")
 @click.option("--rfile", "-r", help="Path to Robot Coordinates File")
 def main(wfile, rfile):
-    """Console script for rw_calibration."""
+    """Console script for rw_calibration.    
+    Arguments:
+        wfile (str) -- Path to World Coordinates File
+        rfile (str) -- Path to Robot Coordinates File
+    """
     if wfile is None:
         click.echo(
             click.style(
